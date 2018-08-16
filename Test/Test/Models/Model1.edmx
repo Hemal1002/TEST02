@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="StokvelModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Investment">
+          <Key>
+            <PropertyRef Name="Investment ID" />
+          </Key>
+          <Property Name="Investment ID" Type="int" Nullable="false" />
+          <Property Name="Date Opened" Type="date" Nullable="false" />
+          <Property Name="Date Ending" Type="date" Nullable="false" />
+          <Property Name="Interest" Type="int" Nullable="false" />
+          <Property Name="Monthly Contribution" Type="money" Nullable="false" />
+          <Property Name="Period" Type="int" Nullable="false" />
+          <Property Name="Expected Amount" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Members">
+          <Key>
+            <PropertyRef Name="IDno." />
+          </Key>
+          <Property Name="IDno." Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Surname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Employment Period" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Property">
+          <Key>
+            <PropertyRef Name="Address" />
+          </Key>
+          <Property Name="Address" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Cost" Type="money" Nullable="false" />
+          <Property Name="Square Meterage" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="Purchase Date" Type="date" Nullable="false" />
+          <Property Name="Use" Type="varchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="StokvelModelStoreContainer">
+          <EntitySet Name="Investment" EntityType="Self.Investment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Members" EntityType="Self.Members" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Property" EntityType="Self.Property" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="StokvelModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Investment">
+          <Key>
+            <PropertyRef Name="Investment_ID" />
+          </Key>
+          <Property Name="Investment_ID" Type="Int32" Nullable="false" />
+          <Property Name="Date_Opened" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Date_Ending" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Interest" Type="Int32" Nullable="false" />
+          <Property Name="Monthly_Contribution" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Period" Type="Int32" Nullable="false" />
+          <Property Name="Expected_Amount" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Member">
+          <Key>
+            <PropertyRef Name="IDno_" />
+          </Key>
+          <Property Name="IDno_" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Employment_Period" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Property">
+          <Key>
+            <PropertyRef Name="Address" />
+          </Key>
+          <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cost" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Square_Meterage" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Purchase_Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Use" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="StokvelEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Investments" EntityType="Self.Investment" />
+          <EntitySet Name="Members" EntityType="Self.Member" />
+          <EntitySet Name="Properties" EntityType="Self.Property" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="StokvelModelStoreContainer" CdmEntityContainer="StokvelEntities">
+          <EntitySetMapping Name="Investments">
+            <EntityTypeMapping TypeName="StokvelModel.Investment">
+              <MappingFragment StoreEntitySet="Investment">
+                <ScalarProperty Name="Investment_ID" ColumnName="Investment ID" />
+                <ScalarProperty Name="Date_Opened" ColumnName="Date Opened" />
+                <ScalarProperty Name="Date_Ending" ColumnName="Date Ending" />
+                <ScalarProperty Name="Interest" ColumnName="Interest" />
+                <ScalarProperty Name="Monthly_Contribution" ColumnName="Monthly Contribution" />
+                <ScalarProperty Name="Period" ColumnName="Period" />
+                <ScalarProperty Name="Expected_Amount" ColumnName="Expected Amount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Members">
+            <EntityTypeMapping TypeName="StokvelModel.Member">
+              <MappingFragment StoreEntitySet="Members">
+                <ScalarProperty Name="IDno_" ColumnName="IDno." />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Employment_Period" ColumnName="Employment Period" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Properties">
+            <EntityTypeMapping TypeName="StokvelModel.Property">
+              <MappingFragment StoreEntitySet="Property">
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="Square_Meterage" ColumnName="Square Meterage" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Purchase_Date" ColumnName="Purchase Date" />
+                <ScalarProperty Name="Use" ColumnName="Use" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

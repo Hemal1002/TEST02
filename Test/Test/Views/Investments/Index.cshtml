@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Test.Models.Investment>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Date_Opened)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date_Ending)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Interest)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Monthly_Contribution)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Period)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Expected_Amount)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date_Opened)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date_Ending)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Interest)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Monthly_Contribution)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Period)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Expected_Amount)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Investment_ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Investment_ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Investment_ID })
+        </td>
+    </tr>
+}
+
+</table>
