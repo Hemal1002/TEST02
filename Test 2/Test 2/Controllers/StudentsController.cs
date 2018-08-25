@@ -50,6 +50,7 @@ namespace Test_2.Controllers
         {
             if (ModelState.IsValid)
             {
+                student.FinalMark = student.calcFinal();
                 db.Students.Add(student);
                 db.SaveChanges();
                 return RedirectToAction("Index");
